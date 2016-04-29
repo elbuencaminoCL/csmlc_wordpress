@@ -31,5 +31,6 @@
                                         echo '</div>';
                                     echo '</div>';
                                 endwhile;
+                                wp_reset_postdata();
                             }
                         ?>

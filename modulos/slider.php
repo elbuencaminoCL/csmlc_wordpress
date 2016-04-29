@@ -25,6 +25,7 @@
                     if ( $query->have_posts() ) {
                         echo '<div class="carousel-inner" role="listbox">';
                         while ( $query->have_posts() ) : $query->the_post();
+                        $excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $query->ID));
                 ?>
                     <div class="item">
                         <? echo get_the_post_thumbnail($post->ID, 'slider', array('class' => 'img-responsive')); ?>
@@ -34,7 +35,7 @@
                                     <h1><? the_title();?></h1>
                                 </div>
                                 <div class="clearfix">
-                                    <h2>Particular Laico y Bilingue</h2>
+                                    <h2><? echo $excerpt; ?></h2>
                                 </div>
                                 <p><a id="btn-slider" class="btn btn-lg btn-default shadow" href="#" role="button">Ver Proyecto Educativo</a></p>
                             </div>

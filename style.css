@@ -21,6 +21,7 @@ h2.center.relative span {text-transform:uppercase;}
 .container.relative ul li {margin:0 0 40px;}
 .container.relative ul.nav li {margin:0;}
 li .block img {margin:0;}
+.dropdown-menu h2 {display:none;}
 #desc-departamento {
     margin: 0px 0px 40px 0px;
 }

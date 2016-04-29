@@ -26,7 +26,6 @@
 					?>
 				</div>
 					
-				<!--SELECTOR DE CATEGORIAS-->
 				<nav id="nav-ciclos" class="relative col-lg-12" role="navigation">
 
 						<ul class="nav nav-pills">
@@ -50,7 +49,7 @@
 							<a class="navbar-brand hidden show-xs" href="#">Ciclos</a>
 
 						</div>			 
-				</nav><!--/SELECTOR DE CATEGORIAS-->
+				</nav>
 
 				<div class="row">
 					<?php 

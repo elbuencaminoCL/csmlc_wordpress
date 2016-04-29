@@ -1527,7 +1527,7 @@ padding-top: 70px;
 .desc-galeria {
   border: 1px solid #ccc;
   border-top: 4px solid #257FA7;
-  padding: 16px 20px 13px;
+  padding: 20px;
   font-size: 15px;
   font-weight: 700;
   color: #1A3861;
@@ -2331,6 +2331,7 @@ body{}
 }
 #calendario .event-desc{
   text-align: left;
+  min-height: 100px;
 }
 #calendario .ver-todos.pull-right{
   float: none!important;

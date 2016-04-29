@@ -9,9 +9,13 @@
 	<div id="main" class="clearfix">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div id="foto-encabezado" class="absolute">
-				<?php if( get_field('_cabecera') ): ?>
-	    			<img src="<?php the_field('_cabecera'); ?>" class="img-responsive" />
-	    		<?php endif; ?>
+				<?php 
+					$image = get_field('_cabecera');
+					$size = 'encabezado'; 
+					if( $image ) {
+						echo wp_get_attachment_image( $image, $size );
+					}
+				?>
 	    	</div>
 			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 
@@ -36,7 +40,6 @@
 						</div>
 					</div><!--/Burbuja alerta para suscribirse-->					
 
-					<!--Últimas Noticias y selector de categorias-->
 					<div id="ultimas-noticias" class="clearfix">
 						<h1 class="upper t-exo">Últimas Noticias</h1>
 						<?php
@@ -87,7 +90,7 @@
 									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cat-noticias">
 										<img class="img-responsive" src="http://placehold.it/24x24">
 									</button>
-									<h4 class="t-exo">Categorias</h4>
+									<h4 class="t-exo">Categorías</h4>
 								</div>
 					 
 								<div class="collapse navbar-collapse padd-cero" id="">
@@ -109,9 +112,8 @@
 								</div>
 							</nav>
 						</div>
-					</div><!--/Últimas Noticias y selector de categorias-->
+					</div>
 
-					<!--Noticias generales - otras Noticias-->
 					<div id="noticias" class="block-image clearfix block noti-page">
 						<div class="container">
 							<div class="row">
@@ -149,6 +151,7 @@
 			                                        echo '</div>';
 			                                    echo '</div>';
 			                                endwhile;
+			                                wp_reset_query();
 			                            }
 			                        ?>
 			                    </div>

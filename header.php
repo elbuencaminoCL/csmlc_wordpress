@@ -40,20 +40,28 @@
 					<div class="row">
 						<div class="collapse navbar-collapse colapsables">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="#">Video Institucional</a></li>
-								<li><a href="#">Galería</a></li>
-								<li><a href="#">Servicio Casino</a></li>
-								<li><a class="fb" href="#"><img src="<?php bloginfo('template_directory'); ?>/img/iconos/ico-facebook.png"></a></li>
-								<li><a class="tt" href="#"><img src="<?php bloginfo('template_directory'); ?>/img/iconos/ico-twitter.png"></a></li>
+								<?php $options = get_option('csmlc_theme_options');
+	                                if ($options['facebook']) {
+	                                    echo '<li><a href="'.$options['facebook'].'" class="fb">';
+	                                        echo '<img class="img-responsive" src="'.get_bloginfo('template_directory').'/img/iconos/ico-facebook.png">';
+	                                    echo '</a></li>';
+	                                } 
+	                                if ($options['facebook']) {
+	                                    echo '<li><a href="'.$options['twitter'].'" class="tt">';
+	                                        echo '<img class="img-responsive" src="'.get_bloginfo('template_directory').'/img/iconos/ico-twitter.png">';
+	                                    echo '</a></li>';
+	                                } 
+	                            ?>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ES<span class="glyphicon glyphicon-menu-down"></span></a>
 						            <ul class="dropdown-menu">
-						                <li><a href="#">ESPAÑOL</a></li>
-						                <li><a href="#">ENGLISH</a></li>
-						                <li><a href="#">SUECO</a></li>
-						            </ul>
+										<li><a href="<?php bloginfo('wpurl'); ?>">ESPAÑOL</a></li>
+						                <li><a href="<?php bloginfo('wpurl'); ?>/en/">ENGLISH</a></li>
+						                <li><a href="<?php bloginfo('wpurl'); ?>/sv/">SUECO</a></li>
+									</ul>
 								</li>
 							</ul>
+							<?php wp_nav_menu( array('menu' => 'Menu Auxiliar', 'menu_class' => 'nav navbar-nav navbar-right', 'walker' => new wp_bootstrap_navwalker())); ?>
 						</div>
 					</div>
 				</div>

@@ -29,7 +29,6 @@
                 <div class="center">
                     <h1>Accesos Directos</h1>
                 </div>
-
                 <div class="row">
                     <? include_once('modulos/accesos.php');?>
                 </div>
@@ -59,23 +58,36 @@
                 <div class="row">
                     <div id="extra" class="col col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix">
                         <h3>EXTRAPROGRAMÁTICAS</h3>
-                        <?php if( have_rows('_ingresar_banners') ): ?>
-                            <?php while( have_rows('_ingresar_banners') ): the_row(); 
-                                $imagen = get_sub_field('_imagen_banner');
-                                $title = get_sub_field('_titulo_banner');
-                                $enlace = get_sub_field('_enlace_banner');
+                        <?php if( get_field('_titulo_banner_1') ): ?>
+                            <?
+                                $title1 = get_field('_titulo_banner_1');
+                                $imagen1 = get_field('_imagen_banner_1');
+                                $enlace1 = get_field('_enlace_banner_1');
                             ?>
-                                <div class="taller">
-                                    <img class="img-responsive hidden-xs" src="<?php echo $imagen; ?>" alt="<?php echo $title ?>" />
-                                    <div class="opacidad-taller"></div>
-                                    <div>
-                                        <a class="btn-extra" href="<?php echo $enlace; ?>"><?php echo $title; ?></a>
-                                    </div>
+                            <div class="taller">
+                                <img class="img-responsive hidden-xs" src="<?php echo $imagen1; ?>" alt="<?php echo $title1; ?>" />
+                                <div class="opacidad-taller"></div>
+                                <div>
+                                    <a class="btn-extra" href="<?php echo $enlace1; ?>"><?php echo $title1; ?></a>
                                 </div>
-                            <?php endwhile; ?>
+                            </div>
                         <?php endif; wp_reset_postdata(); ?>
+                        <?php if( get_field('_titulo_banner_2') ): ?>
+                            <?
+                                $title2 = get_field('_titulo_banner_2');
+                                $imagen2 = get_field('_imagen_banner_2');
+                                $enlace2 = get_field('_enlace_banner_2');
+                            ?>
+                            <div class="taller">
+                                <img class="img-responsive hidden-xs" src="<?php echo $imagen2; ?>" alt="<?php echo $title2; ?>" />
+                                <div class="opacidad-taller"></div>
+                                <div>
+                                    <a class="btn-extra" href="<?php echo $enlace2; ?>"><?php echo $title2; ?></a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
 
-                        <a href="#" class="ver-todos pull-right">Ver Todos</a>
+                        <a href="<?php bloginfo('wpurl'); ?>/extra-programaticas/" class="ver-todos pull-right">Ver Todos</a>
                     </div>
 
                     <div id="calendario" class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">

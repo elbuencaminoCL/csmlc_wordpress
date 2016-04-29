@@ -38,7 +38,7 @@
 
 						<div class="col-sm-5">
 							<div class="row">
-								<a class="btn-primary btn-lg btn-block btn-azul" href="#"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
+								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('template_directory'); ?>/nuestro-colegio/galeria-multimedia/"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
 							</div>
 						</div>
 

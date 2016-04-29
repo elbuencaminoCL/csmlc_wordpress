@@ -1,4 +1,4 @@
-	<!--main-->
+<?php get_header(); ?>	
 	<div id="main" class="clearfix">
 		<div id="foto-encabezado" class="">
 			<img class="img-responsive" src="img/banner-extra.jpg">
@@ -79,4 +79,4 @@
 	        </div>
 	    <?php endif; ?>
 	</div>
-	<!--/main-->
+<?php get_footer(); ?>

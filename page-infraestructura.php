@@ -5,13 +5,16 @@
 ?>
 
 <?php get_header(); ?>
-	<!--main-->
 	<div id="main" class="clearfix">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div id="foto-encabezado" class="absolute">
-				<?php if( get_field('_cabecera') ): ?>
-	    			<img src="<?php the_field('_cabecera'); ?>" class="img-responsive" />
-	    		<?php endif; ?>
+				<?php 
+					$image = get_field('_cabecera');
+					$size = 'encabezado'; 
+					if( $image ) {
+						echo wp_get_attachment_image( $image, $size );
+					}
+				?>
 	    	</div>
 			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 
@@ -70,6 +73,30 @@
 
 					<!-- SELECTOR DE LUGARES -->
 					<div id="infra-desc">
+						<?php 
+                            $infraestructura = array (
+                                'post_type'  => 'infraestructura',
+                                'posts_per_page' => -1
+                            );
+                            $infra = new WP_Query( $infraestructura );
+                            if ( $infra->have_posts() ) {
+                                while ( $infra->have_posts() ) : $infra->the_post();
+                        ?>
+                            <div id="cuadroA" class="cuadro dropdown open">
+								<h3 class="btn dropdown-toggle clearfix upper">
+									<? the_title();?> <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
+								</h3>
+								<article class="dropdown-menu">
+									<img class="img-responsive" src="img/slider1.jpg">
+									<? the_content();?>
+								</article>
+							</div>
+                        <?
+                                endwhile;
+                                wp_reset_postdata();
+                            }
+                        ?>
+
 
 						<div id="cuadroA" class="cuadro dropdown open">
 

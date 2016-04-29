@@ -19,13 +19,20 @@
 			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 
 			<div class="container extrapro">
-			
-				<h3>SELECCIONES DEPORTIVAS</h3>
-				<br>
-				<div class="left t-lato">
-					Los lineamientos deportivos de nuestro colegio han sido pensados considerando potenciar el desarrollo de actividades físicas, potenciando las habilidades de nuestros alumnos y aprovechando al máximo la infraestructura y espacios con los que contamos. En este sentido, los tres deportes que representan oficialmente nuestro colegio a a través de las selecciones deportivas son los siguientes:
-				</div>
-				<br>
+				<?php if( get_field('_subtitulo_bloque_1') ): ?>
+                    <?
+                        $subtitle1 = get_field('_subtitulo_bloque_1');
+                        $text1 = get_field('_texto_introduccion_1');
+                    ?>
+                    <div class="taller">
+                    	<h3 class="upper"><?php echo $subtitle1; ?></h3>
+						<br>
+						<div class="left t-lato">
+							<?php echo $text1; ?>
+						</div>
+						<br>
+                    </div>
+                <?php endif; wp_reset_postdata(); ?>			
 
 				<div class="row cards-talleres">
 					<div class="col-sm-4 caluga-taller shadow">
@@ -78,14 +85,20 @@
 
 				</div>
 
-				<h3>LISTADO DE ACTIVIDADES EXTRA PROGRAMÁTICAS</h3>
-				<br>
-
-				<div class="left t-lato">
-					El Departamento de Deportes y Actividades Extraprogramáticas  orienta  y coordina actividades para impulsar y  fomentar el gusto por realizar actividades físicas, así como el desarrollo deportivo y cultural de  nuestros alumnos.
-				</div>
-
-				<br>
+				<?php if( get_field('_subtitulo_bloque_2') ): ?>
+                    <?
+                        $subtitle1 = get_field('_subtitulo_bloque_2');
+                        $text1 = get_field('_texto_introduccion_2');
+                    ?>
+                    <div class="taller">
+                    	<h3 class="upper"><?php echo $subtitle1; ?></h3>
+						<br>
+						<div class="left t-lato">
+							<?php echo $text1; ?>
+						</div>
+						<br>
+                    </div>
+                <?php endif; wp_reset_postdata(); ?>	
 
 				<nav id="nav-ciclos" class="relative" role="navigation">
 

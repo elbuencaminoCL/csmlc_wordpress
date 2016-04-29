@@ -14,5 +14,5 @@
                                     </div>
                                 </a>
                             </div>
-                        <?php endwhile;?>
+                        <?php endwhile; ?>
                     <?php endif; wp_reset_postdata(); ?>

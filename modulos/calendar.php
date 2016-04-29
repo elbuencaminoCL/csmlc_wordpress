@@ -12,8 +12,8 @@
                                                 echo '<div class="row">';
                                                     echo '<div class="col-sm-3 col-xs-3 fecha">';
                                                         echo '<div>';
-                                                            echo '<h4>'.tribe_get_start_date(null, false, 'M').'</h4>';
-                                                            echo '<h2'.tribe_get_start_date(null, false, 'j').'</h2>';
+                                                            echo '<h4 class="upper">'.tribe_get_start_date(null, false, 'M').'</h4>';
+                                                            echo '<h2>'.tribe_get_start_date(null, false, 'j').'</h2>';
                                                         echo '</div>';
                                                     echo '</div>';
                                                     echo '<div class="col-sm-9 col-xs-9 event-desc">';
