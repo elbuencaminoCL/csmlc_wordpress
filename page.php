@@ -14,7 +14,7 @@
 	    	</div>
 			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 
-			<div class="container relative">
+			<div id="proyecto-educativo" class="container relative">
 				<?php
 					global $post;
 					if ( has_excerpt( $post->ID ) ) {
@@ -39,6 +39,8 @@
 							?>
 							<? the_content();?>
 						</div>
+
+						<? include_once('modulos/descargas.php');?>
 					</div>
 				</div>					
 			</div>

@@ -1,5 +1,9 @@
         <!--FOOTER-->
+    <? if(is_page('inicio') || is_front_page()) { ?>
         <footer id="footer" class="clearfix">
+    <? } else { ?>
+        <footer id="footer" class="clearfix margen-footer">
+    <? } ?>
             <div id="footer-pic">
                 <img src="<?php bloginfo('template_directory'); ?>/img/footer.jpg">
             </div>

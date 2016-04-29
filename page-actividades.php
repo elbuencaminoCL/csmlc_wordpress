@@ -5,18 +5,18 @@
 ?>
 
 <?php get_header(); ?>
-	<!--main-->
-		<div id="main" class="clearfix">
-		
-			<div id="foto-encabezado" class="">
-				<img class="img-responsive" src="img/banner-extra.jpg">
-				<div id="filtro-encab"></div>
-
-				<div class="titulo-encabezado container text-center">
-					<h3>ACTIVIDADES EXTRA PROGRAMÁTICAS</h3>
-				</div>
-
-			</div>
+	<div id="main" class="clearfix">
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<div id="foto-encabezado" class="absolute">
+				<?php 
+					$image = get_field('_cabecera');
+					$size = 'encabezado'; 
+					if( $image ) {
+						echo wp_get_attachment_image( $image, $size );
+					}
+				?>
+	    	</div>
+			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 
 			<div class="container extrapro">
 			
@@ -198,6 +198,12 @@
 				</div>
 				
 			</div>
-		</div>
-		<!--/main-->
+		<?php endwhile; else: ?>
+            <div class="col-xs-12">
+                <p class="textos">Lo sentimos, el contenido que buscas no se encuentra disponible.</p>
+            </div>
+        <?php endif; ?>
+	</div>
+	<!--/main-->
+
 <?php get_footer(); ?>
