@@ -31,7 +31,11 @@
 <?php wp_head();?>
 </head>
 
-<body <? if(!(is_front_page()) || is_page() && !is_page('inicio') || is_category()) { ?>id="generica" <? } ?><?php body_class(); ?>>
+<? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_category()) { ?>
+<body <?php body_class(); ?>>
+<? } else { ?>
+<body id="generica" <?php body_class(); ?>>
+<? } ?>
 	<div id="wrapper">
 		<!--header-->
 		<header id="header" class="header clearfix">

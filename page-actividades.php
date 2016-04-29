@@ -24,14 +24,12 @@
                         $subtitle1 = get_field('_subtitulo_bloque_1');
                         $text1 = get_field('_texto_introduccion_1');
                     ?>
-                    <div class="taller">
-                    	<h3 class="upper"><?php echo $subtitle1; ?></h3>
-						<br>
-						<div class="left t-lato">
-							<?php echo $text1; ?>
-						</div>
-						<br>
-                    </div>
+                    <h1 class="upper"><?php echo $subtitle1; ?></h1>
+					<br>
+					<h2 class="t-lato">
+						<?php echo $text1; ?>
+					</h2>
+					<br>
                 <?php endif; wp_reset_postdata(); ?>			
 
 				<div class="row cards-talleres">
@@ -87,17 +85,13 @@
 
 				<?php if( get_field('_subtitulo_bloque_2') ): ?>
                     <?
-                        $subtitle1 = get_field('_subtitulo_bloque_2');
-                        $text1 = get_field('_texto_introduccion_2');
+                        $subtitle2 = get_field('_subtitulo_bloque_2');
+                        $text2 = get_field('_texto_introduccion_2');
                     ?>
-                    <div class="taller">
-                    	<h3 class="upper"><?php echo $subtitle1; ?></h3>
-						<br>
-						<div class="left t-lato">
-							<?php echo $text1; ?>
-						</div>
-						<br>
-                    </div>
+                    <h1 class="upper"><?php echo $subtitle2; ?></h1>
+					<br>
+					<h2 class="t-lato"><?php echo $text2; ?></h2>
+					<br>
                 <?php endif; wp_reset_postdata(); ?>	
 
 				<nav id="nav-ciclos" class="relative" role="navigation">
