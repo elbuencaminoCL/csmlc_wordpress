@@ -73,6 +73,14 @@
     <? if(is_page('infraestructura')) { ?>
         <script src="<?php bloginfo('template_directory'); ?>/js/infra.js"></script>
     <? } ?>
+    <? if(is_page('extra-programaticas')) { ?>
+        <script src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#cont-talleres').mixItUp();
+            });
+        </script>
+    <? } ?>
 </body>
 
 </html>

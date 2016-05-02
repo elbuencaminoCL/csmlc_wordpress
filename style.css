@@ -128,6 +128,11 @@ a[aria-expanded="false"] img{
 #ciclos .panel-body p{
   font-family: "Lato"
 }
+#noticias .noticia-selected .img-responsive {width:100%;}
+
+.sharify-container ul {float:right !important;}
+.sharify-container li {display:inline-block; text-align:center; width:60px;}
+.sharify-icon {margin:0 !important; float: none; text-align: center; padding: 0px;}
 
 /******CLEARFIX******/
 .clearfix {*zoom:1; display:block;}

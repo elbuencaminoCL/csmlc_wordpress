@@ -69,7 +69,7 @@
 	                                            echo content(20);
 	                                        }
 										?>
-										<a class="btn-primary btn-lg btn-block ver-noticia-principal" href="noticias_detalle.html">Ver Noticia</a>
+										<a class="btn-primary btn-lg btn-block ver-noticia-principal" href="<? the_permalink();?>">Ver Noticia</a>
 									</div>
 									<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 img-noti-principal hidden-xs">
 										<? 
@@ -96,7 +96,7 @@
 								<div class="collapse navbar-collapse padd-cero" id="">
 									<?php
 										global $ancestor;
-										$childcats = get_categories('child_of=' . $cat . '&hide_empty=1');
+										$childcats = get_categories('child_of=19&hide_empty=0');
 										echo '<ul class="nav nav-pills nav-stacked">';
 											echo '<li role="presentation" class="active"><a href="#">TODAS</a></li>';
 											foreach ($childcats as $childcat) {

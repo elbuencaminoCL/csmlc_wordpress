@@ -31,7 +31,7 @@
 <?php wp_head();?>
 </head>
 
-<? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_category()) { ?>
+<? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_single()) { ?>
 <body <?php body_class(); ?>>
 <? } else { ?>
 <body id="generica" <?php body_class(); ?>>

@@ -26,6 +26,7 @@ function wpse_setup_theme() {
         add_image_size( 'gal', 360, 240, array( 'center', 'center'));
         add_image_size( 'banner', 555, 220, array( 'center', 'center'));
         add_image_size( 'child', 650, 350, array( 'center', 'center'));
+        add_image_size( 'act', 150, 190, array( 'center', 'center'));
     }
 } 
 add_action( 'after_setup_theme', 'wpse_setup_theme' );
@@ -144,7 +145,7 @@ function get_custom_terms($taxonomies, $args_custom){
     $args_custom = array('orderby'=>'asc','hide_empty'=>true);
     $custom_terms = get_terms(array($taxonomies), $args_custom);
     foreach($custom_terms as $term){
-        echo '<li class="filter" data-filter=".'.$term->slug.'">'.$term->name.'</li>';
+        echo '<li class="filter" data-filter=".'.$term->slug.'" role="presentation">'.$term->name.'</li>';
     }
 }
 
