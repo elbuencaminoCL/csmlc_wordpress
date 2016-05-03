@@ -272,8 +272,8 @@ function create_post_type_actividades() {
     register_post_type( 'actividades',
         array(
             'labels' => array(
-                'name' => __('Act. Extraprogramáticas'),
-                'singular_name' => __('Act. Extraprogramática'),
+                'name' => __('Act. Extra Programáticas'),
+                'singular_name' => __('Act. Extra Programática'),
                 'add_new' => __('Agregar Actividad'),
                 'add_new_item' => __('Agregar nueva Actividad'),
                 'edit_item' => __('Editar Actividad'),
@@ -431,6 +431,57 @@ function create_post_type_plan() {
         )
     );
     flush_rewrite_rules();
+}
+
+//=================================================================== POST TYPE AND TAXONOMY // 
+add_action( 'init', 'create_post_type_guias' );
+function create_post_type_guias() {
+    register_post_type( 'guias',
+        array(
+            'labels' => array(
+                'name' => __('Guías de Estudio'),
+                'singular_name' => __('Guía'),
+                'add_new' => __('Agregar guía'),
+                'add_new_item' => __('Agregar nueva guía'),
+                'edit_item' => __('Editar guía'),
+                'new_item' => __('Nueva guía'),
+                'all_items' => __('Todas las guías'),
+                'view_item' => __('Ver guías'),
+                'search_items' => __('Buscar guías')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'ver-guias-de-estudio', 'hierarchical' => true),
+            'hierarchical' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'update_count_callback' => '_update_post_term_count',
+            'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' )
+        )
+    );
+    flush_rewrite_rules();
+}
+
+add_action('init', 'create_taxonomy_guias', 0);
+function create_taxonomy_guias() {
+    $labels = array(
+        'name'                => __( 'Guías Cursos', 'taxonomy general name' ),
+        'singular_name'       => __( 'Guías Curso', 'taxonomy singular name' ),
+        'search_items'        => __( 'Buscar en Cursos' ),
+        'all_items'           => __( 'Todos los Cursos' ),
+        'edit_item'           => __( 'Editar Cursos' ), 
+        'update_item'         => __( 'Actualizar Cursos' ),
+        'add_new_item'        => __( 'Agregar Cursos' ),
+        'menu_name'           => __( 'Cursos' )
+    );  
+    $args = array(
+        'hierarchical'        => true,
+        'labels'              => $labels,
+        'show_ui'             => true,
+        'show_admin_column'   => true,
+        'query_var'           => true,
+    );
+    register_taxonomy('guias-cursos', array('horarios'), $args);
 }
 
 //=================================================================== POST TYPE AND TAXONOMY // 

@@ -23,18 +23,7 @@
 				<div class="row">
 					<!--Burbuja alerta para suscribirse-->
 					<div class="alert alert-warning alert-dismissible burbuja-alerta" role="alert">
-						<div class="col-sm-5 col-xs-12">
-							<h4 class="t-exo">Suscríbete a nuestro boletín y recibe todos los eventos en tu mail</h4>
-						</div>
-
-						<div class="col-sm-4 col-xs-12">
-							<input type="mail" placeholder="Escribe aquí tu mail"></input>
-						</div>
-
-						<div class="col-sm-2 col-xs-12">
-							<button type="submit" class="btn-primary btn-lg btn-block btn-suscribirse">Suscribirse</button>
-						</div>
-
+						<? echo do_shortcode('[contact-form-7 id="986" title="Suscribirse"]');?>
 						<div class="col-sm-1 col-xs-12">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><img src="<? bloginfo('template_directory');?>/img/iconos/cerrar.svg"></span></button>
 						</div>
@@ -56,7 +45,7 @@
 						    ) );
 						    if ( $featured_posts->have_posts() ) : while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
 						?>
-							<div class="col-md-9 col-sm-12">							
+							<div class="col-md-9 col-sm-12 block-noticia">							
 								<div class="row noti-principal">
 									<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 detalle">
 										<h4><? the_title();?></h4>
@@ -98,7 +87,7 @@
 										global $ancestor;
 										$childcats = get_categories('child_of=19&hide_empty=0');
 										echo '<ul class="nav nav-pills nav-stacked">';
-											echo '<li role="presentation" class="active"><a href="#">TODAS</a></li>';
+											echo '<li role="presentation" class="active"><a href="'.get_bloginfo('template_directory').'/seccion/noticias/">TODAS</a></li>';
 											foreach ($childcats as $childcat) {
 												if (cat_is_ancestor_of($ancestor, $childcat->cat_ID) == false){
 												    echo '<li role="presentation"><a href="'.get_category_link($childcat->cat_ID).'">';

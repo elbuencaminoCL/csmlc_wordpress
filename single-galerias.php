@@ -1,15 +1,19 @@
 <?php get_header(); ?>	
 	<div id="main" class="clearfix">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?
+				$gal = get_page_by_path('nuestro-colegio/galeria-multimedia');
+			?>
 			<div id="foto-encabezado" class="absolute">
 				<?php 
-					$image = get_field('_cabecera');
+					$image = get_field('_cabecera', $gal);
 					$size = 'encabezado'; 
-					if( $image ) {
+					if($image) {
 						echo wp_get_attachment_image( $image, $size );
 					}
 				?>
-	    	</div>
+		    </div>
+			<h2 class="titulo-seccion center relative"><span><? echo get_the_title($gal);?></span></h2>
 
 			<div class="container relative galeria-detalle">
 				<div class="row">

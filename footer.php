@@ -81,6 +81,14 @@
             });
         </script>
     <? } ?>
+    <? if(is_page('noticias')) { ?>
+        <script>
+            $(function(){
+                $('.widget_wysija').addClass('col-sm-6 col-xs-12');
+                $('form p:first-child').addClass('first');
+            });
+        </script>
+    <? } ?>
 </body>
 
 </html>

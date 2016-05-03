@@ -9,9 +9,13 @@
 	<div id="main" class="clearfix">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div id="foto-encabezado" class="absolute">
-				<?php if( get_field('_cabecera') ): ?>
-	    			<img src="<?php the_field('_cabecera'); ?>" class="img-responsive" />
-	    		<?php endif; ?>
+				<?php 
+					$image = get_field('_cabecera');
+					$size = 'encabezado'; 
+					if( $image ) {
+						echo wp_get_attachment_image( $image, $size );
+					}
+				?>
 	    	</div>
 			<h2 class="titulo-seccion center relative"><span><? the_title();?></span></h2>
 

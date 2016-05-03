@@ -1,20 +1,26 @@
 <?php get_header(); ?>	
 	<div id="main" class="clearfix">
-		<div id="foto-encabezado" class="">
-			<img class="img-responsive" src="img/banner-extra.jpg">
-			<div id="filtro-encab"></div>
-			<div class="titulo-encabezado container text-center">
-				<h3>EXTRA PROGRAMÁTICAS</h3>
-			</div>
-		</div>
+		<?
+			$extra = get_page_by_path('extra-programaticas');
+		?>
+		<div id="foto-encabezado" class="absolute">
+			<?php 
+				$image = get_field('_cabecera', $extra);
+				$size = 'encabezado'; 
+				if($image) {
+					echo wp_get_attachment_image( $image, $size );
+				}
+			?>
+	    </div>
+		<h2 class="titulo-seccion center relative"><span><? echo get_the_title($extra);?></span></h2>
 		
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div class="titulo-taller relative">
 				<div class="container">
-					<div class="row">
-						<h3 class="upper t-exo"><? the_title();?></h3>
-						<h4>Nombre Profesor Taller</h4>
-					</div>
+					<h1 class="upper t-exo"><? the_title();?></h1>
+					<?php if( get_field('_profesor_a_cargo') ): ?>
+				        <h3><?php the_field('_profesor_a_cargo'); ?></h3>
+				    <?php endif; ?>
 				</div>
 			</div>
 
@@ -66,7 +72,7 @@
 
 							<div class="col-sm-4">
 								<div class="row">
-									<a class="btn-primary btn-lg btn-block btn-azul" href="#"><span class="glyphicon glyphicon-menu-left"></span>Volver a Extra Programáticas</a>
+									<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('template_directory'); ?>/extra-programaticas/"><span class="glyphicon glyphicon-menu-left"></span>Volver a Extra Programáticas</a>
 								</div>
 							</div>
 						</div>
