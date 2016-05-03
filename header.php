@@ -25,6 +25,9 @@
 	<!-- styles / fonts -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet" media="screen" />
+	<? if(is_page('infraestructura')) { ?>
+		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/cthiers.css" />
+	<? } ?>
 	<!--[if lt IE 9]>
 	    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	<![endif]-->
@@ -33,6 +36,8 @@
 
 <? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_page_template('page-galerias.php') || is_single()) { ?>
 <body <?php body_class(); ?>>
+<? } elseif(is_page('infraestructura')) { ?>
+<body id="infra" <?php body_class(); ?>>
 <? } else { ?>
 <body id="generica" <?php body_class(); ?>>
 <? } ?>
