@@ -28,7 +28,13 @@
 				<div class="row">
 					<div class="col-sm-7 col-xs-12">
 						<div class="row">
-							<img class="img-responsive img-ficha-taller" src="img/1600.jpg">
+							<? 
+								if(has_post_thumbnail()){
+				                    echo get_the_post_thumbnail($post->ID, 'taller', array('class' => 'img-responsive'));
+				                } else {
+				                    echo '<img src="'.get_bloginfo('template_directory').'/img/gen870.png" class="img-responsive" alt="Colegio Santa María de Lo Cañas" />';
+				                }
+				            ?>
 						</div>
 					</div>
 
@@ -38,37 +44,23 @@
 
 					<div class="col-sm-12 info-ficha-taller">
 						<div class="row">
-							<h3 class="t-exo">Horarios</h3>
-							
-							<div class="col-sm-12">
-								<h4 class="upper">Elementary School</h4>
-
-								<div class="col-sm-11 horario-taller">
-									<p class="upper">Horario</p>
-									<div class="col-sm-3 col-xs-12">
-								
-									Lunes, Miercoles y Viernes
+							<?php if( have_rows('_horarios_talleres') ): ?>
+								<h3 class="t-exo">Horarios</h3>
+								<?php while( have_rows('_horarios_talleres') ): the_row(); 
+									$curso = get_sub_field('_curso_act');
+									$dia = get_sub_field('_dia_act');
+									$horario = get_sub_field('_horario_act');
+								?>
+									<div class="col-sm-12">
+										<h4 class="upper"><?php echo $curso; ?></h4>
+										<div class="col-sm-11 horario-taller">
+											<p class="upper">Horario</p>
+											<div class="col-sm-3 col-xs-12"><?php echo $dia; ?></div>
+											<div class="col-sm-3 col-xs-12"><?php echo $horario; ?></div>
+										</div>
 									</div>
-									<div class="col-sm-3 col-xs-12">
-									16:30 a 20:00 Hrs.
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-sm-12">
-								<h4 class="upper">High School</h4>
-
-								<div class="col-sm-11 horario-taller">
-									<p class="upper">Horario</p>
-									<div class="col-sm-3 col-xs-12">
-									
-									Lunes, Miercoles y Viernes
-									</div>
-									<div class="col-sm-3 col-xs-12">
-									16:30 a 20:00 Hrs.
-									</div>
-								</div>
-							</div>
+								<?php endwhile; ?>
+							<?php endif; ?>
 
 							<div class="col-sm-4">
 								<div class="row">

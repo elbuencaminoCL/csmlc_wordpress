@@ -25,7 +25,8 @@
 	<!-- styles / fonts -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet" media="screen" />
-	<? if(is_page('infraestructura')) { ?>
+	<link href="<?php bloginfo('template_directory'); ?>/css/jquery.bxslider.css" rel="stylesheet" media="screen">
+	<? if(is_page('infraestructura') || is_page('contacto')) { ?>
 		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/cthiers.css" />
 	<? } ?>
 	<!--[if lt IE 9]>
@@ -34,10 +35,12 @@
 <?php wp_head();?>
 </head>
 
-<? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_page_template('page-galerias.php') || is_single()) { ?>
+<? if(is_front_page() || is_page_template('page-actividades.php') || is_page() && is_page('inicio') || is_page_template('page-galerias.php') || is_single() || is_page('calendario-de-eventos')) { ?>
 <body <?php body_class(); ?>>
 <? } elseif(is_page('infraestructura')) { ?>
 <body id="infra" <?php body_class(); ?>>
+<? } elseif(is_page('contacto')) { ?>
+<body id="contacto" <?php body_class(); ?>>
 <? } else { ?>
 <body id="generica" <?php body_class(); ?>>
 <? } ?>
@@ -66,8 +69,7 @@
 						            <ul class="dropdown-menu">
 										<li><a href="<?php bloginfo('wpurl'); ?>">ESPAÑOL</a></li>
 						                <li><a href="<?php bloginfo('wpurl'); ?>/en/">ENGLISH</a></li>
-						                <li><a href="<?php bloginfo('wpurl'); ?>/sv/">SUECO</a></li>
-									</ul>
+						            </ul>
 								</li>
 							</ul>
 							<?php wp_nav_menu( array('menu' => 'Menu Auxiliar', 'menu_class' => 'nav navbar-nav navbar-right', 'walker' => new wp_bootstrap_navwalker())); ?>

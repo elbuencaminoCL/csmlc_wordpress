@@ -31,19 +31,16 @@
 
 				<div class="clearfix listado-infra">
 					<div class="col-sm-7 col-xs-12">
-						<ul>
-								<li>2 Multicanchas y 1 Gimnasio</li>
-								<li>Laboratorio de Ciencias</li>
-								<li>Casino</li>
-								<li>Ámplios espacios de áreas verdes</li>
-						</ul>
+						<?
+							$izquierda = get_field('_contenido_bloque_izquierda');
+							echo $izquierda;
+						?>
 					</div>
 					<div class="col-sm-5 col-xs-12">
-						<ul>
-							<li>Granja</li>
-							<li>Piscina</li>
-							<li>Biblioteca</li>
-						</ul>
+						<?
+							$derecha = get_field('_contenido_bloque_derecha');
+							echo $derecha;
+						?>
 					</div>
 				</div>
 
@@ -251,7 +248,7 @@
 								<? the_title();?> <span class="pull-right cerrar-cuadro glyphicon glyphicon-remove"></span>
 							</h3>
 							<article class="dropdown-menu">
-								<img class="img-responsive" src="img/slider1.jpg">
+								<? echo get_gallery_images();?>
 								<? the_content();?>
 							</article>
 						</div>

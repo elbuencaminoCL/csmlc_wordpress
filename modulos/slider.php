@@ -37,7 +37,9 @@
                                 <div class="clearfix">
                                     <h2><? echo $excerpt; ?></h2>
                                 </div>
-                                <p><a id="btn-slider" class="btn btn-lg btn-default shadow" href="#" role="button">Ver Proyecto Educativo</a></p>
+                                <?php if( get_field('_titulo_boton') ): ?>
+                                    <p><a id="btn-slider" class="btn btn-lg btn-default shadow" href="<?php the_field('_enlace_boton'); ?>" role="button"><?php the_field('_titulo_boton'); ?></a></p>
+                                <?php endif; ?> 
                             </div>
                         </div>
                     </div>

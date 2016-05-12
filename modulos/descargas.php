@@ -9,7 +9,7 @@
 			                        	<li class="clearfix">	
 									    	<p><?php echo $titulo; ?></p>
 									    	<a class="pull-right btn btn-primary btn-descargar" href="<?php echo $link; ?>" target="_blank">
-									    		<span class="hidden-xs">Descargar <?php echo $titulo; ?></span> <span class="glyphicon glyphicon-download-alt"></span>
+									    		<span class="hidden-xs">Descargar Archivo</span> <span class="glyphicon glyphicon-download-alt"></span>
 									    	</a>
 							    		</li>
 			                        <?php endwhile;?>

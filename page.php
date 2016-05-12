@@ -21,7 +21,7 @@
 						$excerpt= apply_filters('the_excerpt', get_post_field('post_excerpt', $post->ID));
 					    echo '<div class="center intro bajada">';
 					    	if(is_page('proyecto-educativo')){
-					    		echo '<img src=""'.get_bloginfo('template_directory').'/img/iconos/ico-globo.svg"><br>';
+					    		echo '<img src="'.get_bloginfo('template_directory').'/img/iconos/ico-globo.svg"><br><br>';
 					    	}
 							echo $excerpt;
 						echo '</div>';

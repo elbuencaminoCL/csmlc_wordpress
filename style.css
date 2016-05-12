@@ -20,7 +20,7 @@ h2.center.relative span {text-transform:uppercase;}
 .category #foto-encabezado img {margin:0 auto;}
 .container.relative ul li {margin:0 0 40px;}
 .container.relative ul.nav li {margin:0 0 2px;}
-.container.relative ul#lista-cuadros li {margin:0;}
+.container.relative ul#lista-cuadros li, .container.relative ul.bxslider li {margin:0;}
 li .block img {margin:0;}
 .dropdown-menu h2 {display:none;}
 #desc-departamento {
@@ -41,8 +41,13 @@ li .block img {margin:0;}
 #generica .titulo-seccion {
     margin: 0px 0px 60px 0px;
 }
+#infra-desc div.slide-int, #infra-desc div.carousel-inner, #infra-desc div.item.active {display:block !important; visibility:visible !important;}
+#infra-desc div.item.active, #infra-desc .carousel-control {height:320px;}
+#infra-desc div.item {opacity:0;}
+#infra-desc div.item.active {opacity:1;}
 
 /*CTHIERS*/
+.main-act #nav-ciclos ul.nav li:nth-child(2) {display:none;}
 #ciclos #main h4.panel-title{
   height: 180px;
   padding: 0px 0px;
@@ -157,6 +162,19 @@ a[aria-expanded="false"] img{
 .burbuja-alerta p input {width:100%;}
 .burbuja-alerta .wpcf7-email {padding-right:15px; width:100%; font-weight:300 !important; font-style:italic;}
 div.wpcf7-validation-errors {border: 2px solid #f7e700; display: block; clear: both; width: 100%;}
+
+.container .mix,
+.container .gap{
+  display: inline-block;
+}
+
+.container .mix{
+  display: none;
+}
+#contacto .col-sm-7 #form-contacto{
+  background: #EEE;
+  padding: 15px;
+}
 
 /******CLEARFIX******/
 .clearfix {*zoom:1; display:block;}

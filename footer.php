@@ -72,12 +72,39 @@
     </script>
     <? if(is_page('infraestructura')) { ?>
         <script src="<?php bloginfo('template_directory'); ?>/js/infra.js"></script>
+        <script src="<?php bloginfo('template_directory'); ?>/js/jquery.bxslider.js" type="text/javascript"></script>
     <? } ?>
-    <? if(is_page('extra-programaticas')) { ?>
+    <? if(is_page('extra-programaticas') || is_page('galeria-multimedia')) { ?>
         <script src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup.js"></script>
         <script type="text/javascript">
             $(function(){
                 $('#cont-talleres').mixItUp();
+            });
+        </script>
+    <? } ?>
+    <? if(is_page('galeria-multimedia')) { ?>
+        <script>
+            $(document).ready(function () {
+                size_li = $("#cont-talleres .caluga-galeria").size();
+                x=3;
+                $('#cont-talleres .caluga-galeria:lt('+x+')').show();
+                $('.btn-cargar-abajo').click(function () {
+                    x= (x+9 <= size_li) ? x+9 : size_li;
+                    $('#cont-talleres .caluga-galeria:lt('+x+')').show();
+                    $('.btn-cargar-abajo').show();
+                    if(x == size_li){
+                        $('.btn-cargar-abajo').hide();
+                    }
+                });
+                $('.btn-cargar-abajo').click(function () {
+                    x=(x-9<0) ? 3 : x-9;
+                    $('#myList li').not(':lt('+x+')').hide();
+                    $('#loadMore').show();
+                     $('#showLess').show();
+                    if(x == 9){
+                        $('#showLess').hide();
+                    }
+                });
             });
         </script>
     <? } ?>

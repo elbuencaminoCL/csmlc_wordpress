@@ -13,6 +13,7 @@
 
 /** RESET AND LAYOUT
 ===================================*/
+.bxslider {margin:0; padding:0; list-style-type:none;}
 
 .bx-wrapper {
 	position: relative;
