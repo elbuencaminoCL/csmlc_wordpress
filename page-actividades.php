@@ -88,10 +88,8 @@
 					<nav id="nav-ciclos" class="relative" role="navigation">
 						<ul class="nav nav-pills">
 							<li role="presentation" class="filter" data-filter="all">TODAS</li>
-						  	<?// echo 
-						  		//if($term->slug == 'actividades-extra-programaticas')
-						  		//	continue;
-						  		//get_custom_terms('actividades-extraprogramaticas',$args);
+						  	<? echo 
+						  		get_custom_terms('actividades-extraprogramaticas',$args);
 						  	?>
 						</ul>
 

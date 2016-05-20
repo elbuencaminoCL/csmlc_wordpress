@@ -22,11 +22,12 @@
 	<!-- styles / fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Exo:400,700,600,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,600,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,600,700' rel='stylesheet' type='text/css'>
 	<!-- styles / fonts -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet" media="screen" />
 	<link href="<?php bloginfo('template_directory'); ?>/css/jquery.bxslider.css" rel="stylesheet" media="screen">
-	<? if(is_page('infraestructura') || is_page('contacto')) { ?>
+	<? if(is_page('infraestructura') || is_page('contacto') || is_page('ciclos') || is_page_template('page-admision.php') || is_page_template('page-departamento.php') || is_category()) { ?>
 		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/cthiers.css" />
 	<? } ?>
 	<!--[if lt IE 9]>
@@ -41,6 +42,12 @@
 <body id="infra" <?php body_class(); ?>>
 <? } elseif(is_page('contacto')) { ?>
 <body id="contacto" <?php body_class(); ?>>
+<? } elseif(is_page_template('page-admision.php')) { ?>
+<body class="home step" id="adm-step-01">
+<? } elseif(is_page_template('page-departamento.php')) { ?>
+<body id="departamento" <?php body_class(); ?>>
+<? } elseif(is_page('ciclos')) { ?>
+<body id="ciclos" <?php body_class(); ?>>
 <? } else { ?>
 <body id="generica" <?php body_class(); ?>>
 <? } ?>

@@ -1779,6 +1779,33 @@ a[aria-expanded="false"] img{
   width: 100%;
   margin: 0px 0px;
 }
+.panel h5 .dropdown{
+	float: right;
+    border-bottom: 1px solid #267fa7;
+    display: block;
+    width: 250px;
+    text-align: right;
+}
+.panel h5 .dropdown select {
+	background: transparent;
+	border: none;
+}
+.panel p input.wpcf7-form-control.wpcf7-submit{
+	background: transparent;
+    color: #1A3861;
+    border-radius: 0px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 14px 40px;
+    border: 2px solid #1A3861;
+    text-align: center;
+    text-transform: uppercase;
+    float: right;
+}
+.panel h5 .dropdown span img{
+	display: none;
+}
 .add-parent{
   background: transparent;
   border-radius: 0px;

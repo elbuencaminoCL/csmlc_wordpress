@@ -43,20 +43,20 @@
 					</div>
 
 					<div class="col-sm-12 info-ficha-taller">
+						<h2 class="t-exo upper">Horarios</h2>
 						<div class="row">
 							<?php if( have_rows('_horarios_talleres') ): ?>
-								<h3 class="t-exo">Horarios</h3>
 								<?php while( have_rows('_horarios_talleres') ): the_row(); 
 									$curso = get_sub_field('_curso_act');
 									$dia = get_sub_field('_dia_act');
 									$horario = get_sub_field('_horario_act');
 								?>
 									<div class="col-sm-12">
-										<h4 class="upper"><?php echo $curso; ?></h4>
+										<h3 class="upper"><?php echo $curso; ?></h3>
 										<div class="col-sm-11 horario-taller">
 											<p class="upper">Horario</p>
-											<div class="col-sm-3 col-xs-12"><?php echo $dia; ?></div>
-											<div class="col-sm-3 col-xs-12"><?php echo $horario; ?></div>
+											<div class="col-md-4 col-sm-6 col-xs-12 dia-horario"><?php echo $dia; ?></div>
+											<div class="col-md-4 col-sm-6 col-xs-12"><span><img src="<?php bloginfo('template_directory'); ?>/img/iconos/ico-taller-hora.svg"></span> <?php echo $horario; ?></div>
 										</div>
 									</div>
 								<?php endwhile; ?>
@@ -64,7 +64,7 @@
 
 							<div class="col-sm-4">
 								<div class="row">
-									<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('template_directory'); ?>/extra-programaticas/"><span class="glyphicon glyphicon-menu-left"></span>Volver a Extra Programáticas</a>
+									<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('wpurl'); ?>/extra-programaticas/"><span class="glyphicon glyphicon-menu-left"></span>Volver a Extra Programáticas</a>
 								</div>
 							</div>
 						</div>

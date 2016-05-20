@@ -38,29 +38,22 @@
 
 						<? the_content();?>
 
-						<img class="img-responsive" src="img/1600.jpg">
-
+						<div class="clearfix int-galerias">
+							<? echo get_detail_images();?>
+						</div>
 						<div class="col-sm-5">
 							<div class="row">
-								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('template_directory'); ?>/nuestro-colegio/galeria-multimedia/"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
+								<a class="btn-primary btn-lg btn-block btn-azul" href="<?php bloginfo('wpurl'); ?>/nuestro-colegio/galeria-multimedia/"><span class="glyphicon glyphicon-menu-left"></span>  Volver a Galería Multimedia</a>
 							</div>
 						</div>
-
 					</div>
 
-					<div class="col-md-3 hidden-sm hidden-xs">
-
+					<div class="col-sm-3 hidden-xs car-noticia">
 						<h3 class="h3-aside upper text-center">Relacionados</h3>
-
-						<a href="btn-block">
-							<img class="img-responsive" src="img/notiproof.jpg">
-							<h4 class="upper center desc-galeria">Descripción Imagen</h4>
-						</a>
+						<? include_once('modulos/related-gal.php');?>
 
 						<div id="sidebar-bulletin" class="col-sm-12 burbuja-alerta-aside">
-							<h4 class="center">Suscríbete a nuestro boletín y recibe todos los eventos en tu mail</h4>
-							<input type="mail" placeholder="Escribe aquí tu mail"></input>
-							<button type="submit" class="btn-primary btn-lg btn-block btn-suscribirse">Suscribirse</button>
+							<? echo do_shortcode('[contact-form-7 id="987" title="Suscribirse side"]');?>
 						</div>
 					</div>
 				</div>

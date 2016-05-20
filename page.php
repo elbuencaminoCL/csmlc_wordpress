@@ -35,9 +35,15 @@
 									echo '<div class="col-sm-6 col-xs-12">';
 								    	echo get_the_post_thumbnail($post->ID, 'generica', array('class' => 'img-responsive'));
 								    echo '</div>';
+								    echo '<div class="col-md-6 col-sm-12 col-xs-12 desc-departamento">';
 								}
 							?>
 							<? the_content();?>
+							<?php
+								if ( has_post_thumbnail() ) {
+									echo '</div>';
+								}
+							?>
 						</div>
 
 						<? include_once('modulos/descargas.php');?>

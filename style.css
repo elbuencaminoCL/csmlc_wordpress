@@ -16,6 +16,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 @import url('css/main.css');
 @import url('css/header.css');
 
+body {
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+}
+
 h2.center.relative span {text-transform:uppercase;}
 .category #foto-encabezado img {margin:0 auto;}
 .container.relative ul li {margin:0 0 40px;}
@@ -38,8 +51,10 @@ li .block img {margin:0;}
   color: #172f51;
   margin: 0px 0px 60px 0px;
 }
-#generica .titulo-seccion {
-    margin: 0px 0px 60px 0px;
+#generica .titulo-seccion {margin: 0px 0px 40px 0px;}
+#accordion {margin:60px 0 0;}
+#noticias .detalle {
+    border-top: 4px solid #1A3861 !important;
 }
 #infra-desc div.slide-int, #infra-desc div.carousel-inner, #infra-desc div.item.active {display:block !important; visibility:visible !important;}
 #infra-desc div.item.active, #infra-desc .carousel-control {height:320px;}
@@ -175,6 +190,23 @@ div.wpcf7-validation-errors {border: 2px solid #f7e700; display: block; clear: b
   background: #EEE;
   padding: 15px;
 }
+.int-galerias {position:relative;}
+.int-galerias .carousel-inner > .item {height:478px;}
+.int-galerias .carousel-inner > .item > img, .carousel-inner > .item > a > img {width:100%;}
+
+.checklist label {}
+.checklist span input[type=checkbox] label span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0px 14px 0px 0px;
+    border-radius: 0;
+    border: 2px solid #267fa7;
+    background: none;
+    vertical-align: bottom;
+}
+#uwpqsf_id {border:none !important;}
+.uform_title {display:none;}
 
 /******CLEARFIX******/
 .clearfix {*zoom:1; display:block;}

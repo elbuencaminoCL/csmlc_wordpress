@@ -40,7 +40,7 @@
 						</ul>
 
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ciclos-nav">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-ciclos">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
@@ -51,44 +51,46 @@
 					</nav>
 
 					<div class="row">
-						<?php 
-	                        $galerias = array (
-				                'post_type' => 'galerias',
-				                'posts_per_page' => -1
-				            );
-				            $gal = new WP_Query($galerias);
-	                        if ( $gal->have_posts() ) {
-	                            while ( $gal->have_posts() ) : $gal->the_post();
-	                            $terms = get_the_terms( $post->ID, 'galerias-multimedia' );
-	                    ?>
-	                    	<div class="col-sm-4 col-xs-12 caluga-galeria mix <? foreach($terms as $term){ echo $term->slug.' ';} ?>">
-								<div class="block contenedor-album">
-									<div class="img-album">
-										<?
-											if(has_post_thumbnail()){
-	                                            echo get_the_post_thumbnail($post->ID, 'gal', array('class' => 'img-responsive'));
-	                                        } else {
-	                                            echo '<img src="'.get_bloginfo('template_directory').'/img/default-news.jpg" class="img-responsive" alt="Colegio Santa María de Lo Cañas" />';
-	                                        }
-										?>
-									</div>
-									<h4 class="desc-galeria upper"><? the_title($gal->ID);?></h4>
-									<div class="mascara-info text-center">
-										<div class="ico-album"><img src="<?php bloginfo('template_directory'); ?>/img/iconos/ico-foto.svg"></div>
-										<p><a href="<? the_permalink($gal->ID);?>">Ver Galería</a></p>
-										<h4 class="upper"><? the_title($gal->ID);?></h4>
-										<p><? echo get_the_date();?></p>
+						<div id="cont-galerias">
+							<?php 
+		                        $galerias = array (
+					                'post_type' => 'galerias',
+					                'posts_per_page' => -1
+					            );
+					            $gal = new WP_Query($galerias);
+		                        if ( $gal->have_posts() ) {
+		                            while ( $gal->have_posts() ) : $gal->the_post();
+		                            $terms = get_the_terms($post->ID, 'galerias-multimedia');
+		                    ?>
+		                    	<div class="col-md-4 col-sm-6 col-xs-12 caluga-galeria mix <? foreach($terms as $term){ echo $term->slug.' ';} ?>">
+									<div class="block contenedor-album">
+										<div class="img-album">
+											<?
+												if(has_post_thumbnail()){
+		                                            echo get_the_post_thumbnail($post->ID, 'gal', array('class' => 'img-responsive'));
+		                                        } else {
+		                                            echo '<img src="'.get_bloginfo('template_directory').'/img/default-news.jpg" class="img-responsive" alt="Colegio Santa María de Lo Cañas" />';
+		                                        }
+											?>
+										</div>
+										<h4 class="desc-galeria upper"><? the_title($gal->ID);?></h4>
+										<div class="mascara-info text-center">
+											<div class="ico-album"><img src="<?php bloginfo('template_directory'); ?>/img/iconos/ico-foto.svg"></div>
+											<p><a href="<? the_permalink($gal->ID);?>">Ver Galería</a></p>
+											<h4 class="upper"><? the_title($gal->ID);?></h4>
+											<p><? echo get_the_date();?></p>
+										</div>
 									</div>
 								</div>
+		                    <?
+		                            endwhile;
+		                      	}
+		                    ?>
+		                    <div class="col-sm-12 center text-center">
+								<div class="btn-cargar-abajo">
+									<a href="javascript:void(0)"><span class="glyphicon glyphicon-menu-down"></span></a>
+								</div>
 							</div>
-	                    <?
-	                            endwhile;
-	                      	}
-	                    ?>
-
-						<div class="col-sm-12 center text-center">
-							<a class="btn-cargar-abajo" href="#"><span class="glyphicon glyphicon-menu-down"></span></a>
-							<a class="btn-cargar-arriba" href="#"><span class="glyphicon glyphicon-menu-top"></span></a>
 						</div>
 					</div>
 				</div>

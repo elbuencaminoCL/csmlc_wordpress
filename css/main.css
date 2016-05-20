@@ -976,7 +976,7 @@ blockquote {
   width: 100%;
   height: 250px;
   overflow: hidden;
-  margin-top: 68px;
+  margin-top: 100px;
   background-color: #000;
 }
 #foto-encabezado img {
@@ -991,7 +991,7 @@ h2.center.relative span {
   font-size: 25px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  margin: 185px 0px 125px 0px;
+  margin: 200px 0px 110px 0px;
 }
 
 /* ¡¡¡AGREGADO POR RANDY!!! + + + INICIO */
@@ -1427,11 +1427,11 @@ padding-top: 70px;
   box-shadow: none;
   background-color: #173052;
 }
-#buscador-guias span{
+/*#buscador-guias span{
   position: absolute;
   top: 10px;
   right: 10px;
-}
+}*/
 .btn-buscar{
   background-color: transparent;
   color: #fff;

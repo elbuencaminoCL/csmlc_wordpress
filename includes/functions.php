@@ -20,14 +20,16 @@ function wpse_setup_theme() {
         add_image_size( 'encabezado', 2000, 250, array( 'center', 'center'));
         add_image_size( 'generica', 540, 360, array( 'center', 'center'));
         add_image_size( 'news', 300, 200, array( 'center', 'center'));
+        add_image_size( 'news-related', 360, 205, array( 'center', 'center'));
         add_image_size( 'news-home', 265, 150, array( 'center', 'center'));
         add_image_size( 'news-det', 870, 580, array( 'center', 'center'));
         add_image_size( 'news-featured', 600, 400, array( 'center', 'center'));
         add_image_size( 'gal', 360, 240, array( 'center', 'center'));
         add_image_size( 'gal-image', 480, 320, array( 'center', 'center'));
         add_image_size( 'banner', 555, 220, array( 'center', 'center'));
-        add_image_size( 'child', 650, 350, array( 'center', 'center'));
-        add_image_size( 'act', 150, 190, array( 'center', 'center'));
+        add_image_size( 'child', 1300, 760, array( 'center', 'center'));
+        add_image_size( 'ciclos', 650, 350, array( 'center', 'center'));
+        add_image_size( 'act', 450, 570, array( 'center', 'center'));
         add_image_size( 'taller', 655, 440, array( 'center', 'center'));
     }
 } 
@@ -76,6 +78,26 @@ function content($limit) {
     $content = apply_filters('the_content', $content); 
     $content = str_replace(']]>', ']]&gt;', $content);
     return $content;
+}
+
+//=================================================================== PAGENAVI WITH BOOTSTRAP//
+//attach our function to the wp_pagenavi filter
+add_filter( 'wp_pagenavi', 'ik_pagination', 10, 2 );
+  
+//customize the PageNavi HTML before it is output
+function ik_pagination($html) {
+    $out = '';
+  
+    //wrap a's and span's in li's
+    $out = str_replace("<div","",$html);
+    $out = str_replace("class='wp-pagenavi'>","",$out);
+    $out = str_replace("<a","<li><a",$out);
+    $out = str_replace("</a>","</a></li>",$out);
+    $out = str_replace("<span","<li><span",$out);  
+    $out = str_replace("</span>","</span></li>",$out);
+    $out = str_replace("</div>","",$out);
+  
+    return '<ul class="pagination pagination-centered">'.$out.'</ul>';
 }
 
 //=================================================================== CUSTOM ADMIN LOGO// 
@@ -241,34 +263,63 @@ global $wpdb;
     $r = wp_parse_args( $args, $defaults );
     extract( $r, EXTR_SKIP );
 
-    if($exclude != 'false') $ciclos_pages = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE (post_type = 'page' AND post_parent = ".$id.") AND (post_status = 'publish' AND menu_order >= 0) ORDER BY menu_order ASC");
-    else $ciclos_pages = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE (post_type = 'page' AND post_parent = ".$id.") AND post_status = 'publish' ORDER BY menu_order ASC");
+    if($exclude != 'false') $ciclos_pages = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE (post_type = 'page' AND post_parent = ".$id.") AND (post_status = 'publish' AND menu_order >= 0) ORDER BY menu_order ASC LIMIT 3");
+    else $ciclos_pages = $wpdb->get_results("SELECT * FROM $wpdb->posts WHERE (post_type = 'page' AND post_parent = ".$id.") AND post_status = 'publish' ORDER BY menu_order ASC LIMIT 3");
     if(!empty($ciclos_pages)){
         $i = 0; $ciclos_pages_size = count($ciclos_pages) - 1;
         foreach($ciclos_pages as $cpages){
             if ( $i === 0 ) $pos = ''; elseif ( $i === $ciclos_pages_size ) $pos = 'bloque'; else $pos = 'bloque';
             if($cpages->menu_order >= 0){
                 echo '<div class="panel panel-default">';
-                    echo '<div class="panel-heading" role="tab" id="headingOne">';
+                    echo '<div class="panel-heading" role="tab" id="heading'.$i.'">';
                         echo '<h4 class="panel-title clearfix">';
                             echo '<div class="absolute">';
-                                echo get_the_post_thumbnail($cpages->ID, 'home', array('class' => 'img-responsive'));
-                                echo '<img class="img-responsive" src="img/ciclo_01.jpg">';
+                                echo get_the_post_thumbnail($cpages->ID, 'child', array('class' => 'img-responsive'));
                             echo '</div>';
-                            echo '<a class="relative clearfix" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">';
-                                echo '<span>'.get_the_title($cpages->ID).'</span> <img class="pull-right" src="'.get_bloginfo().'/img/iconos/ico-toggle.svg">';
+                            echo '<a class="relative clearfix" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">';
+                                echo '<span>'.$cpages->post_title.'</span> <img class="pull-right" src="'.get_bloginfo('template_directory').'/img/iconos/ico-toggle.svg">';
                             echo '</a>';
                         echo '</h4>';
                     echo '</div>';
-                    echo '<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
+                    echo '<div id="collapse'.$i.'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'.$i.'">';
                         echo '<div class="panel-body">';
-                            echo '<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc</p>';
+                            echo '<p>'.$cpages->post_excerpt.'</p>';
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';
             $i++; }
         }
     }
+}
+
+//=================================================================== SEARCH FILTER // 
+add_filter('uwpqsf_result_tempt', 'customize_output', '', 4);
+function customize_output($results , $arg, $id, $getdata ){
+     // The Query
+            $apiclass = new uwpqsfprocess();
+             $query = new WP_Query( $arg );
+        ob_start(); $result = '';
+            // The Loop
+
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();global $post;
+echo '<li class="clearfix">';
+echo '<p><img src="'.get_bloginfo('template_directory').'/img/iconos/ico-adobe.svg">'.get_the_title().'</p>';
+echo '<a class="pull-right btn btn-primary btn-descargar" href="'.get_permalink().'">';
+echo '<span class="hidden-xs">Descargar</span> <span class="glyphicon glyphicon-download-alt"></span>';
+echo '</a>';
+echo '</li>';
+            }
+                        echo  $apiclass->ajax_pagination($arg['paged'],$query->max_num_pages, 4, $id, $getdata);
+         } else {
+                     echo  'no post found';
+                }
+                /* Restore original Post Data */
+                wp_reset_postdata();
+
+        $results = ob_get_clean();      
+            return $results;
 }
 
 //=================================================================== POST TYPE AND TAXONOMY // 
@@ -652,6 +703,38 @@ function get_gallery_images(){
     }
 }
 
+//=================================================================== IMAGES FUNCTIONS//
+function get_detail_images(){
+    global $wpdb;
+    $detail_pict = $wpdb->get_results("SELECT ID, post_title, post_content, post_excerpt FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image%' AND post_excerpt LIKE 'galeria%' AND post_parent = '".get_the_ID()."' ORDER BY menu_order");
+    if ($detail_pict) {
+        echo '<div class="carousel slide slide-int carousel-fade" data-ride="carousel">';
+            echo '<ol class="carousel-indicators">';
+                $i = 0;
+                foreach ($detail_pict as $det) {
+                    echo '<li data-target=".carousel-fade" data-slide-to="'.$i.'"></li>';
+                $i++; }
+            echo '</ol>';
+            echo '<div class="carousel-inner" role="listbox">';
+                $i = 0;
+                foreach ($detail_pict as $det) {
+                    echo '<div class="item">';
+                        echo wp_get_attachment_image($det->ID, 'news-det',array('class' => 'img-responsive'));
+                    echo '</div>';
+                } $i++;
+            echo '</div>';
+        echo '</div>';
+        echo '<a class="left carousel-control" href=".carousel-fade" role="button" data-slide="prev">';
+            echo '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
+            echo '<span class="sr-only">Previous</span>';
+        echo '</a>';
+        echo '<a class="right carousel-control" href=".carousel-fade" role="button" data-slide="next">';
+            echo '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
+            echo '<span class="sr-only">Next</span>';
+        echo '</a>';
+    }
+}
+
 //=================================================================== CONNECTIONS//
 function my_connection_types() {
     p2p_register_connection_type( array(
@@ -679,6 +762,15 @@ add_action( 'p2p_init', 'my_connection_types' );
             'name' => __('Sidebar General', 'csmlc'),
             'description' => __('Sidebar general sitio web', 'csmlc'),
             'id' => 'sidebar-general',
+            'before_title' => '<h2>',
+            'after_title' => '</h2>',
+            'before_widget' => '',
+            'after_widget' => ''
+        ));
+        register_sidebar(array(
+            'name' => __('Sidebar Calendar', 'csmlc'),
+            'description' => __('Sidebar para Calendario', 'csmlc'),
+            'id' => 'sidebar-calendar',
             'before_title' => '<h2>',
             'after_title' => '</h2>',
             'before_widget' => '',
