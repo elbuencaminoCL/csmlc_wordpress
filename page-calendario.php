@@ -49,11 +49,8 @@ get_header(); ?>
 									<h2>
 										<img class="img-ico" src="img/iconos/ico-hora.svg">12:00 Hrs.
 									</h2>
-
 									<h3>Titulo evento</h3>
-
 									<p>Lorem ipsum dolor sit amet, sed an postea invenire, tale voluptatum vel no.</p>
-									
 									<h4>
 										<img src="img/iconos/ico-lugar.svg"> Lugar evento
 									</h4>

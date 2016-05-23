@@ -103,8 +103,8 @@ function ik_pagination($html) {
 //=================================================================== CUSTOM ADMIN LOGO// 
 function my_custom_login_logo() {
     echo '<style type="text/css">
-        body.login {background-image:url('.get_bloginfo('template_directory').'/imag/back/bg-home.jpg) !important; background-position:center top;}
-        h1 a { background-image:url('.get_bloginfo('template_directory').'/imag/logo/logo_csmlc_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
+        body.login {background-image:url('.get_bloginfo('template_directory').'/img/back/bg-home.jpg) !important; background-position:center top;}
+        h1 a { background-image:url('.get_bloginfo('template_directory').'/img/logo_csmlc_admin.png) !important; background-size:320px 67px !important; width:320px !important; height:67px !important;}
     </style>';
 }
 
@@ -295,31 +295,42 @@ global $wpdb;
 //=================================================================== SEARCH FILTER // 
 add_filter('uwpqsf_result_tempt', 'customize_output', '', 4);
 function customize_output($results , $arg, $id, $getdata ){
-     // The Query
-            $apiclass = new uwpqsfprocess();
-             $query = new WP_Query( $arg );
-        ob_start(); $result = '';
-            // The Loop
-
-        if ( $query->have_posts() ) {
+    $apiclass = new uwpqsfprocess();
+    $query = new WP_Query( $arg );
+    ob_start(); $result = '';
+    
+    if ( $query->have_posts() ) {
+        $terms = get_the_term_list($post->ID, 'areas-del-grupo', '', ', ', '');
+        $terms = strip_tags($terms);
+        echo $terms;
+        foreach ($terms as $term) {
+            echo '<div class="panel-heading" role="tab" id="headingOne">';
+                echo '<h4 class="panel-title clearfix titulo-panel">';
+                    echo '<a class="clearfix" role="button" data-toggle="collapse" data-parent="#accordion-guias" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">';
+                        echo  $term->post_title.' <img class="pull-right" src="'.get_bloginfo('template_directory').'/img/iconos/ico-toggle.svg">';
+                    echo '</a>';
+                echo '</h4>';
+            echo '</div>';
+        }
+        echo '<ul>';
             while ( $query->have_posts() ) {
-                $query->the_post();global $post;
-echo '<li class="clearfix">';
-echo '<p><img src="'.get_bloginfo('template_directory').'/img/iconos/ico-adobe.svg">'.get_the_title().'</p>';
-echo '<a class="pull-right btn btn-primary btn-descargar" href="'.get_permalink().'">';
-echo '<span class="hidden-xs">Descargar</span> <span class="glyphicon glyphicon-download-alt"></span>';
-echo '</a>';
-echo '</li>';
+            $query->the_post(); global $post;
+            echo '<li class="clearfix">';
+                echo '<p><img src="'.get_bloginfo('template_directory').'/img/iconos/ico-adobe.svg">'.get_the_title().'</p>';
+                echo '<a class="pull-right btn btn-primary btn-descargar" href="'.get_permalink().'">';
+                    echo '<span class="hidden-xs">Descargar</span> <span class="glyphicon glyphicon-download-alt"></span>';
+                echo '</a>';
+            echo '</li>';
             }
-                        echo  $apiclass->ajax_pagination($arg['paged'],$query->max_num_pages, 4, $id, $getdata);
-         } else {
-                     echo  'no post found';
-                }
-                /* Restore original Post Data */
-                wp_reset_postdata();
+        echo '</ul>';
+        echo  $apiclass->ajax_pagination($arg['paged'],$query->max_num_pages, 4, $id, $getdata);
+    } else {
+        echo  'No se ha encontrado material de estudio para el curso seleccionado.';
+    }
+    wp_reset_postdata();
 
-        $results = ob_get_clean();      
-            return $results;
+    $results = ob_get_clean();      
+    return $results;
 }
 
 //=================================================================== POST TYPE AND TAXONOMY // 
